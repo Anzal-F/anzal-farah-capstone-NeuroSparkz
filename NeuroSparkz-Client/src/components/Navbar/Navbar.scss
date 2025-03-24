@@ -1,0 +1,73 @@
+@use "../../styles/mixins" as *;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #1C3F60;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+
+  .logo img {
+    width: 120px;
+    height: auto;
+  }
+  ul {
+    display: none;
+    list-style: none;
+    justify-content: space-between;
+    width: 50%;
+  }
+
+  .toggle-button {
+    display: block;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    object-fit: contain;
+
+    img {
+      width: 30px;
+      height: auto;
+      fill: white;
+    }
+  }
+
+  &.open ul {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    gap: 1.25rem;
+    height: auto; 
+    background: #1C3F60;
+    padding: 20px 1rem;
+  }
+}
+
+@include tablet {
+  .navbar {
+    .toggle-button {
+      display: none; 
+    }
+
+    ul {
+      display: flex;
+      flex-direction: row;
+      gap: 1.5rem;
+      position: static;
+    }
+  }
+}
+
+.links{
+  color: white;
+  text-decoration: none;
+  background-color: #1C3F60;
+}
+.modal-buttons{
+  display: flex;
+  justify-content: space-between;
+}
