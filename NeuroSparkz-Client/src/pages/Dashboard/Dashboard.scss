@@ -1,0 +1,222 @@
+@use "../../styles/mixins" as *;
+
+.dashboard {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  .flashcard-set {
+    background-color: #ffffff;
+    padding: 24px;
+    margin-bottom: 24px;
+    border-radius: 16px;  
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12); 
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid #e0e0e0;
+    overflow: hidden; 
+    position: relative; 
+    
+    &:hover {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); 
+      transform: translateY(-8px); 
+    }
+
+    &.expanded {
+      background-color: #f9fafc;
+      border-color: #c8d6e5;
+    }
+
+    .set-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #007bff;
+      color: white;
+      padding: 18px;
+      border-radius: 12px 12px 0 0;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+
+      h3 {
+        margin: 0;
+        font-size: 1.6rem;
+        font-weight: 600;
+        flex-grow: 1; 
+      }
+
+      .set-header-icons {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .expand-icon {
+        font-size: 1.4rem;
+        transition: transform 0.3s ease;
+
+        .expanded & {
+          transform: rotate(180deg);
+        }
+      }
+
+      .delete-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        transition: opacity 0.2s ease;
+
+        &:hover {
+          opacity: 0.8;
+        }
+
+        img {
+          width: 22px;
+          height: 22px;
+        }
+      }
+    }
+
+    .set-content {
+      padding: 16px;
+      font-size: 1.1rem;
+      color: #555;
+      line-height: 1.6;
+      margin-top: 12px;
+      text-align: left;
+
+      &.expanded {
+        max-height: 500px;
+        transition: max-height 0.3s ease;
+        overflow: auto;
+      }
+    }
+  }
+
+  .flashcards {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);  
+    gap: 15px;
+    margin-top: 20px;
+
+    @include tablet {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include desktop {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .flashcard {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 12px;  
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+
+      &:hover {
+        transform: translateY(-5px);
+      }
+
+      .flashcard-header {
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+      }
+
+      .flashcard-description {
+        font-size: 1rem;
+        color: #555;
+      }
+
+      .flashcard-example {
+        margin-top: 10px;
+        font-size: 0.9rem;
+        color: #007bff;
+      }
+    }
+  }
+
+  @include tablet {
+    .flashcard-set {
+      padding: 25px;  
+    }
+
+    .flashcards {
+      grid-template-columns: repeat(2, 1fr);  
+    }
+
+    .flashcard {
+      padding: 25px; 
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  @include desktop {
+    .flashcards {
+      grid-template-columns: repeat(3, 1fr);  
+    }
+  }
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  margin-left: 10px;
+}
+
+.delete-btn img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+.add-flashcard-card {
+    background-color: rgba(202, 220, 240, 0.8);
+    padding: 24px;
+    margin-bottom: 24px;
+    border-radius: 16px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid #e0e0e0; 
+    overflow: hidden; 
+    position: relative; 
+
+    &:hover {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); 
+      transform: translateY(-8px); 
+    }
+
+    &.expanded {
+      background-color: #f9fafc;
+      border-color: #c8d6e5;
+    }
+    
+    .plus-icon {
+      font-size: 3rem; 
+      color: rgb(156, 96, 246);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  

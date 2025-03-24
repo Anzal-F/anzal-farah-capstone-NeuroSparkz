@@ -75,37 +75,37 @@ Researchers & professionals aiming to recall key concepts easily.
 ### Mockups
 
 #### Home Page
-![](homepage.png)
+![](./src/assets/Mockups/homepage.png)
 
 #### Register Page
-![](sign_up.png)
+![](./src/assets/Mockups/sign_up.png)
 
 #### Login Page
-![](login_page.png)
+![](./src/assets/Mockups/login_page.png)
 
 #### Flashcard Page before flashcard is generated
-![](flashcard_page.png)
+![](./src/assets/Mockups/flashcard_page.png)
 
 #### Flashcard after Flashcrad is generated
-![](flashcard_generation.png)
+![](./src/assets/Mockups/flashcard_generation.png)
 
 #### Quiz Page
-![](quiz_pages.png)
+![](./src/assets/Mockups/quiz_pages.png)
 
 #### Quiz Page after Quiz is Generated  
-![](quiz_generation.png)
+![](./src/assets/Mockups/quiz_generation.png)
 
 #### Dashboard only after sign up
-![](dashboard.png)
+![](./src/assets/Mockups/dashboard.png)
 
 
 ### Data
 
-![](sql.png)
+![](./src/assets/Mockups/sql.png)
 
 ### Endpoints
 
-**POST /users/register**
+**POST /signup**
 
 - Register a new user account.
 
@@ -126,7 +126,7 @@ Response:
 
 ```
 
-**POST /users/login**
+**POST /login**
 
 - Log in a user and return a JWT token.
 
@@ -202,7 +202,7 @@ Response:
 
 ```
 
-**GET /dashboard/flashcards**
+**GET /dashboard**
 
 - Retrieve the saved flashcards for a logged-in user. This endpoint will return the flashcards that the user has previously saved.
 
