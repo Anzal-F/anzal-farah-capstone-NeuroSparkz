@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -11,6 +10,7 @@ const Flashcards = () => {
   const [text, setText] = useState(() => localStorage.getItem('text') || '');
   const [topic, setTopic] = useState('');
   const [loading, setLoading] = useState(false);
+  const [loadingQuiz, setLoadingQuiz] = useState(false); 
   const [error, setError] = useState(null);
   const [flashcards, setFlashcards] = useState(() => {
     const savedFlashcards = localStorage.getItem('flashcards');
@@ -91,7 +91,7 @@ const Flashcards = () => {
   };
 
   const handleAddNewFlashcard = () => {
-    setFlashcards([]);
+    setFlashcards([]); 
     setText('');
     setTopic('');
     localStorage.removeItem('flashcards');  
@@ -106,9 +106,11 @@ const Flashcards = () => {
   };
 
   const startQuiz = async () => {
+    setLoadingQuiz(true);  
+
     try {
       const response = await axios.post(`${backendUrl}/generate-quiz`, { text }); 
-  
+      
       if (response.data && response.data.questions) {
         const shuffledQuestions = response.data.questions.map(question => ({
           ...question,
@@ -122,6 +124,8 @@ const Flashcards = () => {
     } catch (err) {
       setSubmissionError('Error generating quiz');
       console.error('Error:', err);
+    } finally {
+      setLoadingQuiz(false);
     }
   };
 
@@ -169,7 +173,6 @@ const Flashcards = () => {
       {error && <p className="error-message">{error}</p>}
       {submissionError && <p className="error-message">{submissionError}</p>}
 
-
       {flashcards.length > 0 && (
         <div className="flashcards-list">
           <div className="flashcards-row">
@@ -195,16 +198,16 @@ const Flashcards = () => {
       )}
 
       {showQuizModal && (
-              <div className="modal-overlay">
-                <div className="modal-content">
-                  <h2>Ready to take the quiz?</h2>
-                  <button onClick={startQuiz} disabled={loadingQuiz}>
-                    {loadingQuiz ? 'Loading Quiz...' : 'Start Quiz'}
-                  </button>
-                  <button className='cancel_btn' onClick={() => setShowQuizModal(false)}>Cancel</button>
-                </div>
-              </div>
-            )}
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h2>Ready to take the quiz?</h2>
+            <button onClick={startQuiz} disabled={loadingQuiz}>
+              {loadingQuiz ? 'Loading Quiz...' : 'Start Quiz'}
+            </button>
+            <button className='cancel_btn' onClick={() => setShowQuizModal(false)}>Cancel</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
