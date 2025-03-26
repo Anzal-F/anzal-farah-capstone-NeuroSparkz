@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { useUser } from "../../Context/UserContext"; 
+import { useUser } from "../../context/UserContext"; 
 import './Flashcards.scss';
 
 const backendUrl = import.meta.env.VITE_BACKEND_URL; 

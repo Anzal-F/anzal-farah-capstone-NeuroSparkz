@@ -50,8 +50,8 @@ const Quiz = () => {
     setCorrectAnswers({});
     
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000/api/generate-quiz';
-      const response = await axios.post(backendUrl, { text });
+      const backendUrl = import.meta.env.VITE_BACKEND_URL;
+      const response = await axios.post(`${backendUrl}/generate-quiz`, { text });
 
       if (response.data?.questions) {
         const shuffledQuestions = response.data.questions.map((question) => ({

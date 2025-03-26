@@ -97,6 +97,7 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: 0.3s;
     border: 2px solid transparent; 
+
   
     &.wrong {
       background-color: #ffe6e6; 
@@ -136,7 +137,6 @@
       font-weight: bold;
     }
   }
-  
   
   .submit-btn {
     padding: 12px 25px;
